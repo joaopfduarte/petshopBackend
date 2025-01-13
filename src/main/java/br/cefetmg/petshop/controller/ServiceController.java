@@ -1,7 +1,7 @@
 package br.cefetmg.petshop.controller;
 
-import br.cefetmg.petshop.domain.Pet;
-import br.cefetmg.petshop.service.PetService;
+import br.cefetmg.petshop.domain.ServiceApp;
+import br.cefetmg.petshop.service.ServiceService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,52 +13,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/pet")
+@RequestMapping("api/v1/service")
 public class ServiceController {
 
     @Autowired
-    private final PetService petService;
+    private final ServiceService serviceService;
 
-    public PetController(PetService petService) {
-        this.petService = petService;
+    public ServiceController(ServiceService serviceService) {
+        this.serviceService = serviceService;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pet> getById(@PathVariable Long id){
-        return ResponseEntity.ok().body(petService.getById(id));
+    public ResponseEntity<ServiceApp> getById(@PathVariable Long id){
+        return ResponseEntity.ok().body(serviceService.getById(id));
     }
 
     @GetMapping({"","/"})
-    public ResponseEntity<List<Pet>> getAll(){
-        return ResponseEntity.ok().body(petService.getAll());
+    public ResponseEntity<List<ServiceApp>> getAll(){
+        return ResponseEntity.ok().body(serviceService.getAll());
     }
 
     @GetMapping({"/searchText/{searchText}"})
-    public ResponseEntity<List<Pet>> getBySearchText(@PathVariable String searchText){
-        return ResponseEntity.ok().body(petService.getBySearchText(searchText));
+    public ResponseEntity<List<ServiceApp>> getBySearchText(@PathVariable String searchText){
+        return ResponseEntity.ok().body(serviceService.getBySearchText(searchText));
     }
 
     @GetMapping({"/searchText","/searchText/"})
-    public ResponseEntity<List<Pet>> getBySearchText(){
+    public ResponseEntity<List<ServiceApp>> getBySearchText(){
         return ResponseEntity.ok().body(new ArrayList<>());
     }
 
     @PostMapping({"", "/"})
-    public ResponseEntity<Pet> create(@Valid @RequestBody Pet pet){
-        pet = petService.create(pet);
-        return ResponseEntity.ok().body(pet);
+    public ResponseEntity<ServiceApp> create(@Valid @RequestBody ServiceApp service){
+        service = serviceService.create(service);
+        return ResponseEntity.ok().body(service);
     }
 
     @PutMapping({"", "/"})
-    public ResponseEntity<Pet> update(@Valid @RequestBody Pet pet){
-        pet = petService.update(pet);
-        return ResponseEntity.ok().body(pet);
+    public ResponseEntity<ServiceApp> update(@Valid @RequestBody ServiceApp service){
+        service = serviceService.update(service);
+        return ResponseEntity.ok().body(service);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Pet> update(@PathVariable Long id){
-        Pet pet = petService.delete(id);
-        return ResponseEntity.ok().body(pet);
+    public ResponseEntity<ServiceApp> update(@PathVariable Long id){
+        ServiceApp service = serviceService.delete(id);
+        return ResponseEntity.ok().body(service);
     }
 
     @GetMapping("/teste")
