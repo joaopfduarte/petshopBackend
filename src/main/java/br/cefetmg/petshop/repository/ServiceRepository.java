@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface ServiceRepository extends JpaRepository<ServiceApp, Long> {
 
-    List<ServiceApp> findByNomeContaining(String tipo);
+    List<ServiceApp> findByTipoContaining(String tipo);
 }

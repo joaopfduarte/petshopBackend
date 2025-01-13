@@ -62,7 +62,7 @@ public class ServiceService {
     }
 
     public List<ServiceApp> getBySearchText(String searchText) {
-        List<ServiceApp> serviceList = serviceRepository.findByNomeContaining(searchText);
+        List<ServiceApp> serviceList = serviceRepository.findByTipoContaining(searchText);
         if (serviceList == null){
             serviceList = new ArrayList<>();
         }

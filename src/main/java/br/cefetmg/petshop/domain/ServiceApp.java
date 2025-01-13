@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "pet")
+@Entity(name = "service")
 public class ServiceApp {
 
     @Id
