@@ -20,17 +20,17 @@ public class ServiceService {
 
     private final ServiceRepository serviceRepository;
 
-    public ServiceApp getById(Long id){
+    public ServiceApp getById(Long id) {
         ServiceApp service = serviceRepository.findById(id).orElse(null);
-        if (service == null){
+        if (service == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Service não encontrado");
         }
 
         return service;
     }
 
-    public ServiceApp create(ServiceApp service){
-        if (service != null && service.getId() != null){
+    public ServiceApp create(ServiceApp service) {
+        if (service != null && service.getId() != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id não deve ser informado");
         }
 
@@ -43,7 +43,7 @@ public class ServiceService {
     }
 
     public ServiceApp update(ServiceApp service) {
-        if (service != null && service.getId() == null){
+        if (service != null && service.getId() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id deve ser informado");
         }
 
@@ -53,8 +53,9 @@ public class ServiceService {
 
     public ServiceApp delete(Long id) {
         ServiceApp service = this.getById(id);
-        if (service == null){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Service ("+id+") não encontrado para exclusão.");
+        if (service == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                    "Service (" + id + ") não encontrado para exclusão.");
         }
 
         serviceRepository.delete(service);
@@ -63,7 +64,7 @@ public class ServiceService {
 
     public List<ServiceApp> getBySearchText(String searchText) {
         List<ServiceApp> serviceList = serviceRepository.findByTipoContaining(searchText);
-        if (serviceList == null){
+        if (serviceList == null) {
             serviceList = new ArrayList<>();
         }
 
