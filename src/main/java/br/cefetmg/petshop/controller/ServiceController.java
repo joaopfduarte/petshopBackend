@@ -55,6 +55,15 @@ public class ServiceController {
         return ResponseEntity.ok().body(service);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ServiceApp> updateService(
+            @PathVariable Long id,               // Obtém o ID da URL
+            @RequestBody ServiceApp updatedService  // Corpo da requisição com os dados atualizados
+    ) {
+        ServiceApp service = serviceService.update(updatedService);
+        return ResponseEntity.ok(service);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<ServiceApp> update(@PathVariable Long id){
         ServiceApp service = serviceService.delete(id);
