@@ -26,7 +26,7 @@ public class ServiceApp {
     @Column(nullable = false, length = 70)
     private String descricao;
 
-    @NotEmpty
+    @NotNull
     @Column(nullable = false, length = 70)
     private float valor;
 
