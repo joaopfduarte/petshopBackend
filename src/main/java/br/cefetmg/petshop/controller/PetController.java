@@ -24,45 +24,45 @@ public class PetController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pet> getById(@PathVariable Long id){
+    public ResponseEntity<Pet> getById(@PathVariable Long id) {
         return ResponseEntity.ok().body(petService.getById(id));
     }
 
-    @GetMapping({"","/"})
-    public ResponseEntity<List<Pet>> getAll(){
+    @GetMapping({ "", "/" })
+    public ResponseEntity<List<Pet>> getAll() {
         return ResponseEntity.ok().body(petService.getAll());
     }
 
-    @GetMapping({"/searchText/{searchText}"})
-    public ResponseEntity<List<Pet>> getBySearchText(@PathVariable String searchText){
+    @GetMapping({ "/searchText/{searchText}" })
+    public ResponseEntity<List<Pet>> getBySearchText(@PathVariable String searchText) {
         return ResponseEntity.ok().body(petService.getBySearchText(searchText));
     }
 
-    @GetMapping({"/searchText","/searchText/"})
-    public ResponseEntity<List<Pet>> getBySearchText(){
+    @GetMapping({ "/searchText", "/searchText/" })
+    public ResponseEntity<List<Pet>> getBySearchText() {
         return ResponseEntity.ok().body(new ArrayList<>());
     }
 
-    @PostMapping({"", "/"})
-    public ResponseEntity<Pet> create(@Valid @RequestBody Pet pet){
+    @PostMapping({ "", "/" })
+    public ResponseEntity<Pet> create(@Valid @RequestBody Pet pet) {
         pet = petService.create(pet);
         return ResponseEntity.ok().body(pet);
     }
 
-    @PutMapping({"", "/"})
-    public ResponseEntity<Pet> update(@Valid @RequestBody Pet pet){
+    @PutMapping({ "", "/" })
+    public ResponseEntity<Pet> update(@Valid @RequestBody Pet pet) {
         pet = petService.update(pet);
         return ResponseEntity.ok().body(pet);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Pet> update(@PathVariable Long id){
+    public ResponseEntity<Pet> update(@PathVariable Long id) {
         Pet pet = petService.delete(id);
         return ResponseEntity.ok().body(pet);
     }
 
     @GetMapping("/teste")
-    public String teste(){
+    public String teste() {
         return "Teste";
     }
 }

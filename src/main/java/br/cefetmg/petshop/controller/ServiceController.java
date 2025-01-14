@@ -59,7 +59,6 @@ public class ServiceController {
     @Autowired
     private ServiceRepository serviceRepository;
 
-
     @DeleteMapping("/{id}")
     public ResponseEntity<ServiceApp> update(@PathVariable Long id) {
         ServiceApp service = serviceService.delete(id);
